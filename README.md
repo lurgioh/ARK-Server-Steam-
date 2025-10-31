@@ -1,7 +1,7 @@
 # 🦖 ARK: Survival Evolved Dedicated Server (Bare Metal)
 
 **Author:** Harrison Lurgio  
-**Focus Areas:** Server Administration • Networking • Virtualization • Backup Automation  
+**Focus Areas:** Server Administration • Networking 
 **Status:** Active Project  
 
 ---
