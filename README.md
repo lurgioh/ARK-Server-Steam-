@@ -8,7 +8,7 @@
 
 ## 📖 Overview
 This project documents the setup and operation of my **ARK: Survival Evolved dedicated server** hosted on **bare metal hardware**.  
-The server is optimized for **Xbox Cross-Play**, managed through **AMP (Application Management Panel)**, and securely exposed to the internet via **Playit.gg tunneling** and **Tailscale** for remote administration.
+The server is optimized for Steam (PC), managed through **AMP (Application Management Panel)**, and securely exposed to the internet via **Playit.gg tunneling** and **Tailscale** for remote administration.
 
 I built this as part of my **homelab environment** to practice system deployment, uptime monitoring, and network isolation in a real-world gaming workload scenario.
 
