@@ -26,6 +26,6 @@ I built this as part of my **homelab environment** to practice system deployment
 | **Access** | Remote via Tailscale + Playit.gg Tunnel |
 | **Management** | AMP (CubeCoders) |
 
-**Topology Example:**
+
 
 
