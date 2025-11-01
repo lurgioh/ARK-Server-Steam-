@@ -55,7 +55,7 @@ The goal was to create a stable, secure, and efficient server environment for Wi
 
 ### **Problem #4 – BIOS Access / Boot Priority**
 - **Issue:** Couldn’t access BIOS or boot menu; Debian launched directly.  
-- **Fix:** Used **F8** during boot to open the boot device menu and reinstall Debian properly.  
+- **Fix:** Used **F8** and plugged in a keyboard with a cord and stopped using wireless keyboard 
 
 ### **Problem #5 – Network & SSH Confusion**
 - **Issue:** Unclear if root password or domain name was required during setup.  
