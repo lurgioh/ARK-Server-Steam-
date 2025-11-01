@@ -2,7 +2,7 @@
 
 ## 📘 Project Overview
 This project documents the complete setup, troubleshooting, and optimization process of hosting an **ARK: Survival Evolved** dedicated server on a self-built **Debian 13 headless Linux machine**.  
-The goal was to create a stable, secure, and efficient server environment for **Xbox/Windows CrossPlay (Microsoft version)** of ARK, hosted on local hardware and remotely managed via SSH.
+The goal was to create a stable, secure, and efficient server environment for Windows(Steam) of ARK, hosted on local hardware and remotely managed via SSH.
 
 ---
 
