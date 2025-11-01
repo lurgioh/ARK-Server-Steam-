@@ -19,7 +19,7 @@ I built this as part of my **homelab environment** to practice system deployment
 | Component | Description |
 |------------|-------------|
 | **Host OS** | Windows 10 Pro / Ubuntu Server 22.04 (bare metal) |
-| **CPU** | Intel i5-8600 |
+| **CPU** | Intel i5-7500 |
 | **Memory** | 16 GB DDR4 |
 | **Storage** | 1 TB SSD (server + OS), 2 TB HDD (backups) |
 | **Network** | AT&T Fiber → Personal Router → Switch → Server |
