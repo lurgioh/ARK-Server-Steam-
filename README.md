@@ -2,7 +2,7 @@
 
 ## 📘 Project Overview
 This project documents the complete setup, troubleshooting, and optimization process of hosting an **ARK: Survival Evolved** dedicated server on a self-built **Debian 13 headless Linux machine**.  
-The goal was to create a stable, secure, and efficient server environment for Windows(Steam) of ARK, hosted on local hardware and remotely managed via SSH.
+The goal was to create a stable, secure, and efficient server environment for **Xbox/Windows CrossPlay (Microsoft version)** of ARK, hosted on local hardware and remotely managed via SSH and AMP.
 
 ---
 
@@ -26,15 +26,16 @@ The goal was to create a stable, secure, and efficient server environment for Wi
 - Enabled **SSH server** and **standard system utilities** only.  
 - **Did not set a root password** (to automatically grant sudo privileges to main user).  
 - Created user **harrison** with a strong password for SSH and system administration.  
+- Used a **wired USB keyboard** for BIOS access because the Bluetooth keyboard was not detected during POST, preventing BIOS entry.
 
 ### **2. Network Configuration**
-- Connected via Ethernet and automatically assigned IP: `192.168.1.234/24`  
+- Connected via Ethernet and automatically assigned IP: `192.168.1.234/24`.  
 - Verified network connectivity and confirmed DNS resolution.  
 
 ### **3. Remote Access Setup**
 - Enabled SSH during installation.  
 - Verified SSH service was active.  
-- Connected from Windows laptop using SSH.  
+- Connected from Windows laptop using SSH (`ssh harrison@192.168.1.234`).  
 
 ---
 
@@ -46,7 +47,7 @@ The goal was to create a stable, secure, and efficient server environment for Wi
 
 ### **Problem #2 – Missing Sudo Permissions**
 - **Issue:** User `harrison` was not in the sudoers file; commands like `sudo systemctl` failed.  
-- **Fix:** Installed `sudo` and added user to `sudo` group. Verified with `groups harrison` and `sudo whoami` returning `root`.  
+- **Fix:** Installed `sudo` and added the user to the `sudo` group. Verified with `groups harrison` and `sudo whoami` returning `root`.  
 
 ### **Problem #3 – Corrupted Installation Media**
 - **Issue:** Base package installation failed with errors such as *Failure while installing base packages*.  
@@ -54,8 +55,8 @@ The goal was to create a stable, secure, and efficient server environment for Wi
 - **Fix:** Re-downloaded Debian 13 ISO and re-flashed USB using **Rufus** (DD image mode).  
 
 ### **Problem #4 – BIOS Access / Boot Priority**
-- **Issue:** Couldn’t access BIOS or boot menu; Debian launched directly.  
-- **Fix:** Used **F8** and plugged in a keyboard with a cord and stopped using wireless keyboard 
+- **Issue:** Could not access BIOS or boot menu because Bluetooth keyboard failed to register before POST.  
+- **Fix:** Switched to a **wired keyboard**, pressed **F8** during startup, and accessed BIOS/boot menu successfully.  
 
 ### **Problem #5 – Network & SSH Confusion**
 - **Issue:** Unclear if root password or domain name was required during setup.  
@@ -69,31 +70,54 @@ The goal was to create a stable, secure, and efficient server environment for Wi
 
 ## 🚀 Final Configuration
 - Updated and upgraded all packages.  
-- Installed essential utilities: `curl`, `wget`, `screen`, `unzip`.  
+- Installed essential utilities (`curl`, `wget`, `screen`, `unzip`).  
 - Installed **SteamCMD** for ARK server management.  
 - Created a dedicated ARK server directory and downloaded the server files.  
 
 ---
 
-## 🧩 Key Takeaways
-- ⚙️ Running **headless Debian** significantly improves performance and stability.  
-- 🧠 Learned advanced Linux privilege and user management (sudoers, root, user groups).  
-- 🔐 Strengthened understanding of secure server setup and SSH administration.  
-- 🧰 Improved problem-solving skills through multiple reinstalls and configuration recovery.  
-- 🖥️ Gained hands-on experience building a reliable home game server from scratch.  
+## 🧩 Installing AMP (Application Management Panel)
+After the ARK server was configured manually, **AMP** was installed to simplify management and automate tasks.
+
+### **What AMP Does**
+AMP (Application Management Panel) is a lightweight web-based interface for managing game servers, services, and applications.  
+It handles:
+- Game server installation and updates  
+- Service monitoring  
+- Scheduled backups and restarts  
+- Easy configuration through a web UI  
+
+### **Installation Summary**
+1. Added AMP repository and installed dependencies.  
+2. Installed AMP using the official CubeCoders script.  
+3. Configured a new **ARK: Survival Evolved instance** within AMP.  
+4. Set resource limits, scheduled auto restarts, and verified successful startup through the web dashboard.  
+5. Secured AMP with authentication and confirmed accessibility via local IP in browser (port 8080 by default).  
+
+**Result:** AMP provided centralized management, logging, and streamlined configuration for the ARK server, improving efficiency and stability.
+
+---
+
+## 🧠 Key Takeaways
+- ⚙️ Running **headless Debian** significantly improved performance and resource utilization.  
+- 🧰 Troubleshot multiple Linux issues including privilege escalation, freezing terminals, and corrupted installations.  
+- 🧠 Learned advanced privilege and service management (sudoers, systemctl, SSH, AMP).  
+- 🔐 Strengthened understanding of secure and modular game server hosting.  
+- 💡 Adapted quickly — switching from a Bluetooth to wired keyboard to regain BIOS control.  
+- 🕹️ Gained real-world experience hosting and maintaining a production-style game server environment.  
 
 ---
 
 ## 📈 Future Improvements
-- Automate ARK startup with a `systemd` service.  
-- Add monitoring via **Grafana + Prometheus**.  
-- Implement offsite backups using `cron` jobs.  
-- Enable secure remote access using **Tailscale** or **Cloudflare Tunnel**.  
+- Automate ARK startup through a `systemd` service integrated with AMP.  
+- Add monitoring via **Grafana + Prometheus** dashboards.  
+- Implement offsite backups using `rsync` and cron jobs.  
+- Set up **Tailscale** or **Cloudflare Tunnel** for secure remote management.  
 
 ---
 
 ## 🏁 Final Thoughts
-This project involved several rounds of troubleshooting, OS reinstalls, and configuration refinement.  
-Despite multiple challenges — including freezing terminals, sudo permission errors, and corrupt media — the final result was a **stable, secure, and headless ARK dedicated server** optimized for continuous uptime and remote management.  
+This project involved multiple reinstalls, BIOS troubleshooting, network configuration, and service management learning.  
+Despite recurring challenges — from keyboard issues and sudo errors to corrupt media — the end result is a **fully functional, secure, and headless ARK dedicated server** running on Debian 13 and managed through AMP.  
 
-This project strengthened my **Linux administration, troubleshooting, and server deployment skills**, and stands as a great representation of persistence and real-world problem-solving in a home lab environment.
+This process strengthened my **Linux administration, troubleshooting, automation, and homelab deployment skills**, and showcases persistence, adaptability, and deep problem-solving in a real-world scenario.
